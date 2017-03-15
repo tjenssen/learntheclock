@@ -7,19 +7,14 @@ ApplicationWindow {
     width: 640
     height: 480
     title: qsTr("learn the clock")
+    header: Button {
+        text: "add new page"
+    }
 
-    SwipeView {
+    MainView {
         id: swipeView
         anchors.fill: parent
         currentIndex: tabBar.currentIndex
-
-        Page1 {
-            title: "build with designer"
-        }
-
-        QmlSandbox {
-            title: "just a label"
-        }
     }
 
     footer: TabBar {
@@ -29,7 +24,7 @@ ApplicationWindow {
         Repeater {
             model: swipeView.contentChildren
             TabButton {
-                text: modelData.title
+                text: index + " - " + modelData.title
             }
         }
     }
